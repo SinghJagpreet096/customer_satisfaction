@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/jagpreetsingh/ML_Projects/customer_satisfaction/mlruns/0/9429bea8224341c080ee9e2f0044bcbd/artifacts
+end_time: 1702457490099
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9429bea8224341c080ee9e2f0044bcbd
+run_name: puzzled-toad-137
+run_uuid: 9429bea8224341c080ee9e2f0044bcbd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1702457489304
+status: 3
+tags: []
+user_id: jagpreetsingh
