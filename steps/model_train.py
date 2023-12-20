@@ -9,7 +9,8 @@ from src.model_dev import LinearRegressionModel
 from sklearn.base import RegressorMixin
 from .config import ModelNameConfig
 
-# tracker = Client().activate_stack.experiment_tracker
+from mlflow import MlflowClient
+
 
 @step
 def train_model(

@@ -6,10 +6,10 @@ from sklearn.base import RegressorMixin
 from typing import Tuple
 from typing_extensions import Annotated
 
-import mlflow
+from mlflow import MlflowClient,log_metric
 from zenml.client import Client
 
-# tracker = Client().activate_stack.experiment_tracker
+
 
 @step
 def model_evaluate(
@@ -25,13 +25,13 @@ def model_evaluate(
 
         prediction = model.predict(X_test)
         mse_score = MSE().calculate_scores(y_test,prediction)
-        mlflow.log_metric("mse", mse_score)
+        log_metric("mse", mse_score)
 
         rmse_score = RMSE().calculate_scores(y_test,prediction)
-        mlflow.log_metric("rmse", rmse_score)
+        log_metric("rmse", rmse_score)
 
         r2 = R2().calculate_scores(y_test,prediction)
-        mlflow.log_metric("r2", r2)
+        log_metric("r2", r2)
         return mse_score, rmse_score, r2
     except Exception as e:
         logging.error(f"Error in model evaluate: {e}")
