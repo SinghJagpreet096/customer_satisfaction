@@ -1,9 +1,9 @@
-from pipelines.deployment_pipeline import deployment_pipeline, inference_pipeline
+from pipelines.deployment_pipeline import continous_deployment_pipeline
 import click
 from rich import print
 from zenml.integrations.mlflow.mlflow_utils import get_tracking_uri
 from zenml.integrations.mlflow.model_deployers.mlflow_model_deployer import MLFlowModelDeployer
-from zenml.integrations.mlflow.services import MLFlowDeploymentService
+# from zenml.integrations.mlflow.services import MLFlowDeploymentService
 
 
 DEPLOY = "deploy"
@@ -33,6 +33,12 @@ def run_deployment(config: str, min_accuracy: float):
     predict = config == PREDICT or config == DEPLOY_AND_PREDICT
 
     if deploy:
-        deployment_pipeline(min_accuracy)
+        continous_deployment_pipeline(data_path="data/olist_customers_dataset.csv",
+                                      min_accuracy=min_accuracy,
+                                      workers=3,
+                                      timeout=60)
     if predict:
         inference_pipeline()
+
+if __name__ == "__main__":
+    run_deployment()
